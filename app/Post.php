@@ -15,4 +15,16 @@ class Post extends Model
         }
         return $imageUrl;
     }
+
+    public function author(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function getDateAttribute(){
+        return $this->created_at->diffforHumans();
+    }
+
+    public function scopeLatestFirst(){
+        return $this->orderBy('created_at','desc');
+    }
 }
