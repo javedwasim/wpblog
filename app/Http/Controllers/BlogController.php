@@ -15,4 +15,9 @@ class BlogController extends Controller
                     ->simplePaginate($this->limit);
         return view('blog.index',compact('posts'));
     }
+
+    public function show($id){
+        $post = Post::findOrfail($id);
+        return view('blog.show',compact('post'));
+    }
 }
